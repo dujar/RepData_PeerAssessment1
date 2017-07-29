@@ -1,7 +1,7 @@
 ---
 title: "Assignmentrepre"
 author: "Fabricio Dujardin"
-date: "7/21/2017"
+date: "7/29/2017"
 output: html_document
 ---
 
@@ -141,7 +141,8 @@ newdataset[,weekdays:= ifelse(weekdays(date) %in% c("Saturday","Sunday"),"weeken
 * Make a panel plot containing a time series plot (i.e. 𝚝𝚢𝚙𝚎 = "𝚕") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). See the README file in the GitHub repository to see an example of what this plot should look like using simulated data.
 
 ```{r}
-stepsweekdaysbyinterval <- newdataset[,steps1,by=c("interval","weekdays")]
+stepsweekdaysbyinterval <- newdataset[,mean(steps1),by=c("interval","weekdays")]
+
 g <- ggplot(stepsweekdaysbyinterval, aes(interval, V1)) + geom_line() + facet_grid(weekdays ~.) + xlab("Interval") + ylab("Number of Steps") 
 g
 
